@@ -1,44 +1,264 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>APREBot</title>
+  <meta charset="UTF-8">
+  <title>APREBot: Active Perception System for Reflexive Evasion Robot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bulma CSS (same family as REBot / UEREBot) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
   <style>
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:#0b0f17;color:#e8eefc;}
-    .c{max-width:920px;margin:0 auto;padding:24px 18px;}
-    .card{background:#121a26;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;margin:16px 0;}
-    h1{margin:0;font-size:42px;}
-    .sub{margin:8px 0 0;color:#a9b4cc;}
-    a{color:#7aa2ff;text-decoration:none;}
+    body { font-family: 'Noto Sans', sans-serif; }
+    .title-container { max-width: 75%; margin: auto; }
+    .title-container h1 { margin-bottom: 2.5rem; }
+
+    .main-video {
+      width: 100%;
+      max-width: 50%;
+      aspect-ratio: 16 / 9;
+      margin: auto;
+      display: block;
+      margin-top: 3.5rem;
+    }
+
+    .abstract { max-width: 50%; margin: 2rem auto; }
+    .abstract p { text-align: justify; font-size: 1.2rem; line-height: 1.6; }
+
+    /* Demo grid */
+    .demo-card { padding: 0.75rem; }
+    .demo-video { width: 100%; border-radius: 12px; display: block; }
+
+    /* Caption under demo: bigger + perfectly centered with the video width */
+    .demo-cap{
+      margin-top: 0.65rem;
+      width: 100%;
+      text-align: center;
+      font-size: 1.30rem;
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    /* Real-robot sub-block spacing (make the gap larger) */
+    .sub-block { margin-top: 2.25rem; }
+    .sub-block:first-of-type { margin-top: 1.25rem; }
   </style>
 </head>
-<body>
-  <div class="c">
-    <h1>APREBot</h1>
-    <div class="sub">Active Perception System for Reflexive Evasion Robot</div>
 
-    <div class="card">
-      <h2 style="margin:0 0 12px;font-size:20px;">Main Video</h2>
-      <p>Placeholder. (We will add video/ embedding next.)</p>
+<body>
+  <!-- Title + Main Video (REBot-like minimal) -->
+  <section class="section has-text-centered">
+    <div class="title-container">
+      <h1 class="title is-1">
+        APREBot: Active Perception System for Reflexive Evasion Robot
+      </h1>
     </div>
 
-    <div class="card">
-      <h2 style="margin:0 0 12px;font-size:20px;">Abstract</h2>
+    <iframe class="main-video"
+      src="https://www.youtube.com/embed/nTJ6J86b4lk"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <!-- Abstract (REBot-like) -->
+  <section class="section">
+    <div class="abstract">
+      <h2 class="title is-3 has-text-centered">Abstract</h2>
       <p>
-        APREBot is an active-perception system for reflexive evasion under limited reaction time.
-        This page will host demos and method overview.
+        Reliable onboard perception is critical for quadruped robots navigating dynamic environments, where obstacles can emerge from any direction under strict‌ reaction-time constraints. Single-sensor systems face inherent limitations: LiDAR provides omnidirectional coverage but lacks rich texture information, while cameras capture high-resolution detail but suffer from restricted field of view. We introduce APREBot (Active Perception System for Reflexive Evasion Robot), a novel framework that integrates reflexive evasion with active hierarchical perception. APREBot strategically combines LiDAR-based omnidirectional scanning with camera-based active focusing, achieving comprehensive environmental awareness essential for agile obstacle avoidance in quadruped robots. We validate APREBot through extensive sim-to-real experiments on a quadruped platform, evaluating diverse obstacle types, trajectories, and approach directions. Our results demonstrate substantial improvements over state-of-the-art baselines in both safety metrics and operational efficiency, highlighting APREBot's potential for dependable autonomy in safety-critical scenarios.
       </p>
     </div>
+  </section>
 
-    <div class="card">
-      <h2 style="margin:0 0 12px;font-size:20px;">Method Overview</h2>
-      <p>Placeholder for figure/pipeline.png</p>
-    </div>
+  <!-- Simulation Demos (4 demos, 2x2) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Simulation Demos</h2>
 
-    <div class="card" style="color:#a9b4cc;font-size:12px;text-align:center;">
-      © APREBot Project
+      <div class="columns is-variable is-4 is-multiline">
+        <div class="column is-6 demo-card">
+          <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+            <source src="video/sidestep.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="column is-6 demo-card">
+          <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+            <source src="video/jump.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="column is-6 demo-card">
+          <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+            <source src="video/jump1.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="column is-6 demo-card">
+          <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+            <source src="video/crouch.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Real-Robot Demos -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Real-Robot Demos</h2>
+
+      <!-- Human -->
+      <div class="sub-block">
+        <h3 class="title is-4 has-text-centered">Human Approach</h3>
+        <div class="columns is-variable is-4 is-multiline is-centered">
+          <!-- row 1: two -->
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/human_turn.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Active Reorientation</div>
+          </div>
+
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/human_retreat.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Navigation-based Avoidance</div>
+          </div>
+
+          <!-- row 2: one -->
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/human_reflex.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Reflexive Evasion</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stick Poke -->
+      <div class="sub-block">
+        <h3 class="title is-4 has-text-centered">Stick Poke</h3>
+        <div class="columns is-variable is-4 is-multiline is-centered">
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/stick_turn.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Active Reorientation</div>
+          </div>
+
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/stick_retreat.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Navigation-based Avoidance</div>
+          </div>
+
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/stick_reflex.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Reflexive Evasion</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ball Hit -->
+      <div class="sub-block">
+        <h3 class="title is-4 has-text-centered">Ball Hit</h3>
+        <div class="columns is-variable is-4 is-multiline is-centered">
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/ball_turn.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Active Reorientation</div>
+          </div>
+
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/ball_retreat.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Navigation-based Avoidance</div>
+          </div>
+
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/ball_reflex.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Reflexive Evasion</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Long-Horizon -->
+      <div class="sub-block">
+        <h3 class="title is-4 has-text-centered">Long-Horizon</h3>
+        <div class="columns is-variable is-4 is-multiline is-centered">
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/human.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Human Approach</div>
+          </div>
+
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/stick.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Stick Poke</div>
+          </div>
+
+          <div class="column is-6 demo-card">
+            <video class="demo-video autoplay-on-visible" controls loop muted playsinline preload="metadata">
+              <source src="video/ball.mp4" type="video/mp4">
+            </video>
+            <div class="demo-cap">Ball Hit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method / Pipeline -->
+  <section class="section">
+    <div class="container has-text-centered">
+      <h2 class="title is-3">Method</h2>
+      <img src="figure/framework.png" alt="APREBot Method Overview" style="max-width: 90%; height: auto;">
+    </div>
+  </section>
+
+  <!-- Autoplay videos only when visible (allow multiple videos on screen) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const videos = Array.from(document.querySelectorAll('video.autoplay-on-visible'));
+
+      const tryPlay = (v) => {
+        const p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      };
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const v = entry.target;
+            if (entry.isIntersecting) {
+              tryPlay(v);
+            } else {
+              if (!v.paused) v.pause();
+            }
+          });
+        }, { threshold: 0.6 });
+
+        videos.forEach(v => observer.observe(v));
+      } else {
+        // Fallback: attempt to play all (may be blocked by browser)
+        videos.forEach(v => tryPlay(v));
+      }
+    });
+  </script>
 </body>
 </html>
